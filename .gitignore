@@ -1,0 +1,14 @@
+# Fotos originais da camera - ficam so no seu computador (OneDrive).
+# As versoes tratadas e otimizadas que o site usa estao em img/
+IMG_*.jpg
+IMG_*.jpeg
+Jardim V4.jpeg
+Logotipo Verde Jeff Company.png
+Entrada Residencial sem o carro.png
+
+# Temporarios
+.thumbs/
+previa/
+*.webp
+Thumbs.db
+desktop.ini
