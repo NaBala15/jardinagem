@@ -116,6 +116,7 @@ p{margin:0}
 .wrap{max-width:var(--max);margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
 .band{padding-block:clamp(64px,9vw,118px)}
 .eyebrow{font-family:var(--body);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 18px}
+@media(max-width:620px){.eyebrow-extra{display:none}}
 .lede{color:var(--muted);font-size:1.06rem;max-width:62ch}
 .h-sec{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:500}
 
@@ -132,12 +133,17 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav-links a{text-decoration:none}
 .nav-links a:hover{color:var(--fg)}
 @media(max-width:980px){.nav-links{display:none}}
-@media(max-width:420px){.nav .btn{padding:11px 16px;font-size:.85rem}.brand-txt i{display:none}}
+@media(max-width:430px){.nav .btn{padding:12px 18px;font-size:.86rem}.brand-txt i{display:none}}
+@media(max-width:400px){.rotulo-longo{display:none}.rotulo-curto{display:inline}}
+@media(max-width:330px){.brand-txt{display:none}}
 
 /* ---------- botões ---------- */
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:600;font-size:.95rem;
   padding:14px 24px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;
+  white-space:nowrap;line-height:1.2;
   transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.nav .btn{flex:0 0 auto}
+.rotulo-curto{display:none}
 .btn svg{flex:none}
 .btn-main{background:var(--leaf);color:#06180D;box-shadow:0 10px 30px -12px rgba(78,203,118,.75)}
 .btn-main:hover{background:#63DC89;transform:translateY(-2px)}
@@ -186,7 +192,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .ba{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:4/3;max-width:100%}
 .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ba .after{clip-path:inset(0 0 0 var(--pos,50%))}
-.ba-tag{position:absolute;top:16px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+.ba-tag{position:absolute;top:16px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
   padding:7px 13px;border-radius:999px;background:rgba(6,13,9,.76);backdrop-filter:blur(6px);border:1px solid var(--line)}
 .ba-tag.l{left:16px;color:#E8C27A}
 .ba-tag.r{right:16px;color:var(--leaf)}
@@ -213,11 +219,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .slide:hover{opacity:1;border-color:var(--line-strong)}
 .slide[aria-pressed="true"]{opacity:1;border-color:var(--leaf);box-shadow:0 0 0 1px var(--leaf),0 0 34px -6px rgba(78,203,118,.5)}
 .car-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.dots{display:flex;gap:8px}
-.dot{width:9px;height:9px;padding:0;border-radius:50%;border:none;background:#2C4030;cursor:pointer;transition:background .2s ease,transform .2s ease}
-.dot[aria-current="true"]{background:var(--leaf);transform:scale(1.3)}
+.dots{display:flex;gap:2px;margin-left:-9px}
+.dot{width:30px;height:30px;padding:0;border:none;background:none;cursor:pointer;display:grid;place-items:center;border-radius:50%}
+.dot::before{content:"";width:9px;height:9px;border-radius:50%;background:#2C4030;transition:background .2s ease,transform .2s ease}
+.dot[aria-current="true"]::before{background:var(--leaf);transform:scale(1.35)}
+.dot:hover::before{background:#4A6552}
 .hint{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-@media(prefers-reduced-motion:reduce){.dot,.slide{transition:none}}
+@media(prefers-reduced-motion:reduce){.dot::before,.slide{transition:none}}
 
 /* ---------- projeto 3d ---------- */
 .proj{display:grid;gap:20px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
@@ -322,14 +330,14 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       <a href="#como-funciona">Como funciona</a>
       <a href="#contato">Contato</a>
     </div>
-    <a class="btn btn-main" href="https://wa.me/5511918626510?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20jardinagem." target="_blank" rel="noopener">Pedir orçamento</a>
+    <a class="btn btn-main" href="https://wa.me/5511918626510?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20jardinagem." target="_blank" rel="noopener"><span class="rotulo-longo">Pedir orçamento</span><span class="rotulo-curto">Orçamento</span></a>
   </div>
 </nav>
 
 <header class="hero" id="topo">
   <div class="hero-media"><img src="img/hero.jpg" alt="Corredor de grama recém-cortada entre canteiros de buxinho aparado, com arbustos floridos ao fundo" fetchpriority="high"></div>
   <div class="wrap hero-in">
-    <p class="eyebrow">Carapicuíba, Granja Viana, Cotia e região · Residências, chácaras e condomínios</p>
+    <p class="eyebrow">Carapicuíba, Granja Viana, Cotia e região<span class="eyebrow-extra"> · Residências, chácaras e condomínios</span></p>
     <h1>Do mato alto ao <em>jardim que dá orgulho</em> de mostrar.</h1>
     <p class="lede">Corte de grama, poda, limpeza de terreno e manutenção feitos por quem vive disso. Você manda uma foto no WhatsApp e a gente te diz o que fazer e quanto custa.</p>
     <div class="hero-cta" id="heroCta">
